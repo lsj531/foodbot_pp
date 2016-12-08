@@ -61,7 +61,7 @@
 //	</div>
 
     data.push(d1);
-    console.log(data);
+    //console.log(data);
     var svg = d3.select("#graph_pane").append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -84,13 +84,10 @@
             .orient("left");
 
     var line = d3.svg.line()
-//            .interpolate("basis")
             .x(function(d,i) {
-//                console.log("x",d);
                 return x(d[0]);
             })
             .y(function(d) {
-//                console.log("y",d)
                 return y(d[1]);
             });
 

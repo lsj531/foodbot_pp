@@ -9,7 +9,6 @@
 		insert into tbl_chat (cno, uid, content,sender,image_path) values
 		(#{cno},#{uid},#{content},#{sender},#{image_path})
 	</insert>
-
     
 	<select id="read" resultType="ChatVO">
 		select
@@ -19,10 +18,8 @@
 		where uid = #{uid}
 	</select>
 
-
 	<delete id="delete">
 		delete from tbl_chat where uid= #{uid}
 	</delete>
 
-	
 </mapper>

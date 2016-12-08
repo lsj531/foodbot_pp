@@ -55,9 +55,7 @@ public class InitTrainData {
 		dataName = trainData.getDataName();
 		foodName = trainData.getOutputName();
 		
-		/*
-		 * 레시피를 조합하여 분류기 입력출력 데이터를 만든다.
-		 */
+		// 레시피를 조합하여 분류기 입력출력 데이터를 만든다.
 		RecipeToTrainData rtt = new RecipeToTrainData(recipeList,foodName);
 		recipeList = rtt.getTrainInputList();
 		trainOuputData = rtt.getTrainOuputData();

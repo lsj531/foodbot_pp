@@ -3,7 +3,6 @@ import java.util.List;
 
 public class MorpProcess {
 
-
 	private ArrayList<String> morpList;
 	private ArrayList<String> attrList;
 	private List<CodeSeparateVO> codeVOList;
@@ -12,10 +11,10 @@ public class MorpProcess {
 	private ArrayList<String> codeList;
 	private ArrayList<String> wordList;
 	
-	public MorpProcess() {
-	}
+	public MorpProcess() {}
+	
 	public MorpProcess(ArrayList<String> morpList, ArrayList<String> wordList) {
-		this.morpList = morpList;	
+		this.morpList = morpList;
 		this.wordList = wordList;
 		
 		codeList = new ArrayList<String>();
@@ -24,7 +23,6 @@ public class MorpProcess {
 
 		codeSeparate();
 		codeDecision();
-		
 		
 //		System.out.println("codeList");
 //		for(int i=0 ; i<codeList.size() ; i++) {

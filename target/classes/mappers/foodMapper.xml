@@ -26,11 +26,7 @@
   
   <!--음식명 조건으로 read -->
   <select id="readFname" resultType="FoodVO">
-    select
-    *
-    from
-    tbl_foodinfo
-    where fname = #{fname}
+    select * from tbl_foodinfo where fname = #{fname}
   </select>
   
   <!--음식코드 조건으로 read -->

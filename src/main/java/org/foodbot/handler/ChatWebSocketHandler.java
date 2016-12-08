@@ -35,9 +35,6 @@ public class ChatWebSocketHandler extends TextWebSocketHandler{
 	
 	@Inject
 	FoodService fservice;
-	
-
-	
 
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {

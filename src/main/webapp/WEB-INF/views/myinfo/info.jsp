@@ -55,6 +55,9 @@ function change(li){
 @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
+section {
+	padding: 0;
+}
 
 h1	{
  	font-family: 'Nanum Pen Script', serif;
@@ -70,7 +73,7 @@ iframe {
 	position: absolute;
 	left : 27%;
 	color: white;
-	top: 40px;  
+	top: 6%;  
 }
 
 #sidetab-fixed {

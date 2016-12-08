@@ -38,7 +38,6 @@ $(function(){
 		</div>
 	</section>
 
-
 	<section id="services">
 		<div class="container">
 			<div class="row">
@@ -85,7 +84,6 @@ $(function(){
 			</div>
 		</div>
 	</section>
-
 	
 	<!-- Load footer -->
 	<div id="footer"></div>

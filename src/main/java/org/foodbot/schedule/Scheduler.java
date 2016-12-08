@@ -45,21 +45,7 @@ public class Scheduler {
 	}
 	@Scheduled(cron="*/5 * * * * *")
 	public void cronTest() throws Exception{
-
-		System.out.println("스케줄러 실행중 *******************");
 		currSessionList = CountManager.sessionList;
-		/*
-		for(int i=0 ; i<currSessionList.size() ; i++) {
-			System.out.println("currSessionList val "+currSessionList.get(i) );
-		}
-		for(int i=0 ; i<uidList.size() ; i++) {
-			Set key2 = uidList.keySet();
-			for (Iterator iterator = key2.iterator(); iterator.hasNext();) {
-				String keyName = (String) iterator.next();
-					System.out.println("현재 유저는 "+ keyName);
-			}
-		}
-		 */
 
 		Set key = uidList.keySet();
 		for(int i=0 ; i<currSessionList.size() ; i++) {
@@ -75,20 +61,16 @@ public class Scheduler {
 							myThread = new Thread(new ThreadRunnable(vo,mservice,fservice));
 							myThread.start();
 						}
-
 					}
 				}
 			}
 		}
-
-
 	}
 
 	public static void setUid(String sessionId,String uid) {
 		uidList.put(sessionId,uid);
 	}
 }
-
 
 class ThreadRunnable implements Runnable {
 	private MLPWeightVO vo;
@@ -104,10 +86,10 @@ class ThreadRunnable implements Runnable {
 		this.mservice = mservice;
 		this.fservice = fservice;
 		
-		// 학습중이라는 것을 디비에 명시함
+		// 학습중이라는 것을 DB에 명시함
 		vo.setLearn_b(0);
 		mservice.updateLearningB(vo);
-		vo.setLearn_curr(1);// 학습 중인 상태
+		vo.setLearn_curr(1); // 학습 중인 상태
 		mservice.updateLearningCURR(vo);
 		// 기존 학습데이터를 삽입한다.
 		init.loadWeight(Config.USER_TRAIN_WEIGHT+vo.getWeight_path());
@@ -116,22 +98,18 @@ class ThreadRunnable implements Runnable {
 	}
 	@Override
 	public void run() {
-//		oll = new OneLineLearning(tattr,toutput,true);
-		System.out.println("추가 학습 완료 ");
-		// 학습완료라는 것을 디비에 명시함
+		System.out.println("추가 학습 완료 "); // 학습완료라는 것을 DB에 명시함
 		try {
 			// 학습한 weight 저장 
 			init.SaveWeight(Config.USER_TRAIN_WEIGHT+vo.getWeight_path());
 			// 학습한 tmp 데이터 삭제
 			init.deleteTAttribute(Config.USER_TRAIN_WEIGHT+vo.getTattribute_path());
 			init.deleteTOutput(Config.USER_TRAIN_WEIGHT+vo.getToutput_path());
-			// 학습한 tmp 를 attribute 파일에 추가저장
+			// 학습한 tmp 를 attribute 파일에 추가 저장
 			init.saveAttribute(Config.USER_TRAIN_WEIGHT+vo.getAttribute_path(), tattr);
 			init.saveOutput(Config.USER_TRAIN_WEIGHT+vo.getOutput_path(), toutput);
 			
-			
 			// 온라인 러닝시에 추가학습후 전체학습을 다시 
-			
 			tattr = init.loadAttribute(Config.USER_TRAIN_WEIGHT+vo.getAttribute_path());
 			toutput = init.loadOutput(Config.USER_TRAIN_WEIGHT+vo.getOutput_path());
 			System.out.println("전체 학습 데이터 갯수 " + tattr.length + " " + toutput.length);
@@ -139,13 +117,12 @@ class ThreadRunnable implements Runnable {
 			oll = new OneLineLearning(tattr,toutput,false,1000);
 			System.out.println("추가 전체 학습 완료 ");
 			
-//			// 학습이 끝난 것을 디비에 명시함
-			vo.setLearn_curr(0);// 학습 중인 상태
+			// 학습이 끝난 것을 DB에 명시함
+			vo.setLearn_curr(0);// 학습이 끝난 상태
 			mservice.updateLearningCURR(vo);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 }

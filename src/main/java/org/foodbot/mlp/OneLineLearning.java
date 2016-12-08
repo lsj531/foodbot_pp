@@ -5,10 +5,6 @@ import java.util.List;
 
 import org.foodbot.time.FTime;
 
-/*
- * 
- * 우선 추가된 자료만 학습을 해보자.
- */
 
 public class OneLineLearning extends Learning {
 
@@ -26,7 +22,6 @@ public class OneLineLearning extends Learning {
 	// bias
 	private List<double[]> biasList = new ArrayList<double[]>();
 
-
 	public static double[][] inputData;
 	public static double[][] trainInputData;
 	public static double[][] batchInputData;
@@ -39,9 +34,7 @@ public class OneLineLearning extends Learning {
 	// training set num
 	private static int patternNum = HyperParameter.OUTPUT_NUM;
 
-
 	int[] output;
-
 
 	public OneLineLearning(double[][] inputData, int[] output, boolean batchBoolean, int epoch) {
 		mlpFunc = new MLPFunction();
@@ -143,28 +136,7 @@ public class OneLineLearning extends Learning {
 				}
 				//				System.out.println();
 			}
-			//System.out.println();
 		}
-		/*
-		for(int i=0 ; i<activationList.size() ;i++) {
-			System.out.println("beforeActivationList "+" "+beforeActivationList.get(i).length + " "+beforeActivationList.get(i)[0].length);
-		}
-		for(int i=0 ; i<activationList.size() ;i++) {
-			System.out.println("activationList "+" "+activationList.get(i).length + " "+activationList.get(i)[0].length);
-		}
-		for(int i=0 ; i<deltaList.size() ;i++) {
-			System.out.println("deltaList "+" "+deltaList.get(i).length + " "+deltaList.get(i)[0].length);
-		}
-		for(int i=0 ; i<gradientDecentList.size() ;i++) {
-			System.out.println("gradientDecentList "+" "+gradientDecentList.get(i).length + " "+gradientDecentList.get(i)[0].length);
-		}
-		*/
-		//		for(int i =0 ;i<gradientDecentList.size() ; i++) {
-		//			System.out.println("gradientDecentList.size() "+gradientDecentList.size()+" "+ gradientDecentList.get(i).length +
-		//									 "  " + gradientDecentList.get(i)[0].length);
-		//			
-		//				
-		//		}
 		learning();
 		//		saveBias();
 	}
@@ -300,8 +272,6 @@ public class OneLineLearning extends Learning {
 			//					sum += ((-yi[i] * (double)Math.log(htheta[j])) - ((1.0-yi[i]) * (doubles)Math.log(1.0-htheta[j])));
 			//					System.out.println(j+ " htheta[j]) "+htheta[j]);
 		}
-		//				System.out.println("sum "+sum);
-		//}
 		return sum;
 	}
 }

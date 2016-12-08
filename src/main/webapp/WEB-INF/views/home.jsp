@@ -8,16 +8,14 @@
 <% MemberVO memberVO = (MemberVO)session.getAttribute("login"); %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Creative - Start Bootstrap Theme</title>
+<title>FoodBot</title>
 <!-- Bootstrap Core CSS -->
 <link href="<%=cp%>/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -26,7 +24,6 @@
 <link
 	href="<%=cp%>/resources/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
-
 
 <!-- Plugin CSS -->
 <link href="<%=cp%>/resources/vendor/magnific-popup/magnific-popup.css"
@@ -44,14 +41,6 @@
 <link rel="stylesheet" href="<%=cp%>/resources/css/bootstrap.min.css" />
 <link href="<%=cp%>/resources/chatting/chat.css" rel="stylesheet">
 <link href="<%=cp%>/resources/search/search.css" rel="stylesheet">
-
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 <style>
 .login {
@@ -77,6 +66,10 @@
 	top: 100px;
 	right: 5%;
 	z-index: 1000;
+}
+
+#top_bar {
+	color: #777;
 }
 
 .searchPage {
@@ -134,9 +127,7 @@
 
 <body id="page-top">
 
-
 	<input type="text" id="infocus" />
-
 
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
@@ -147,7 +138,7 @@
 					<span class="sr-only">Toggle navigation</span> Menu <i
 						class="fa fa-bars"></i>
 				</button>
-				<a class="navbar-brand page-scroll" href="#page-top">Food Bot</a>
+				<a class="navbar-brand page-scroll" href="#page-top" id="top_bar">Food Bot</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -172,14 +163,11 @@
 		<img src="<%=cp%>/resources/img/banner/2.jpg" alt="" width="100%" />
 	</div>
 
-
 	<div class="chatting"></div>
-	<!-- 
-	<iframe id="chatFrame" src="/chat/chat-ws" style="border: none;"  ALLOWTRANSPARENCY="true">
-  </iframe>
- -->
+	
 	<div class="searchPage"></div>
 
+	<!-- 로그인이 되지 않은 경우 -->
 	<% if(session.getAttribute("login") == null) { %>
 	<div class="login">
 		<section class="logincontainer">
@@ -213,9 +201,9 @@
 		</section>
 	</div>
 
+	<!-- 회원가입 팝업 -->
 	<div id="fadeandscale" class="well">
 		<h1>Sign Up!</h1>
-
 		<form action="/member/regist" method="post"
 			class="form form--registration">
 
@@ -250,17 +238,12 @@
 			성별 <select name="sex" class="styled">
 				<option value="man">남성</option>
 				<option value="woman">여성</option>
-
 			</select> <br>
 			<button class="btn btn-default" onclick="valid_check()">회원가입</button>
 			<button class="fadeandscale_close btn btn-default">취소</button>
-
 		</form>
-
 	</div>
 	<%} %>
-
-
 
 	<!-- jQuery -->
 	<script src="<%=cp%>/resources/vendor/jquery/jquery.min.js"></script>
@@ -289,194 +272,156 @@
 	<script src="<%=cp%>/resources/js/jquery.bxslider.js"></script>
 
 	<script src="<%=cp%>/resources/js/jquery.popupoverlay.js"></script>
-<script type="text/javascript"
+	<script type="text/javascript"
     src="//apis.daum.net/maps/maps3.js?apikey=88485d00abcd6a98f6f09e1b96a94245"></script>
 
 	<script>
-  
-  
-    var windowWidth = $( window ).width();
-    var windowHeight = $( window ).height();
-    $( window ).resize(function() {
-        windowWidth = $( window ).width();
-        windowHeight = $( window ).height();
-    });
+	var windowWidth = $( window ).width();
+	var windowHeight = $( window ).height();
+	$( window ).resize(function() {
+		windowWidth = $( window ).width();
+		windowHeight = $( window ).height();
+	});
     
-    
-    var height = $(document).scrollTop();
-    if(height < 50) {
-      $("body").css({'top':'0px'});
-    } else {
-      $("body").css({'top':'-160px'});
-    } 
+	var height = $(document).scrollTop();
+	if(height < 50) {
+		$("body").css({'top':'0px'});
+	} else {
+		$("body").css({'top':'-160px'});
+	} 
      
-    $(window).scroll(function() {
-        var height = $(document).scrollTop();
-        var altHeight = height + 100;
-        //$(".chatting").css("top",altHeight+"px");
+	$(window).scroll(function() {
+		var height = $(document).scrollTop();
+		var altHeight = height + 100;
        
-        if(height < 50) {
-          $("body").css({'top':'0px'});
-        } else {
-          $("body").css({'top':'-160px'});
-        }
-    });
-    
-  </script>
+		if(height < 50) {
+			$("body").css({'top':'0px'});
+		} else {
+			$("body").css({'top':'-160px'});
+		}
+	});
+	</script>
 	<script>
-   
-
-        
-   $(document).ready(function(){
-    
-	   
-	   
-	      /*
-	      * 브라우저 로딩후 처음 포커싱을 로그인에 맞춘다 
-	      * 로그인 한 후 엔터를 누르면 채팅창이 나와
-	      * 입력창에 포커스가 간다
-	      * 이후에 포커스가 없어도 엔터만 누르면 입력창에 입력가능
-	      */
-	      if($('#login__email').length == 0) {
-	    	  $('#infocus').focus();
+	
+	$(document).ready(function(){
+		/*
+		* 브라우저 로딩후 처음 포커싱을 로그인에 맞춘다 
+		* 로그인 한 후 엔터를 누르면 채팅창이 나와
+		* 입력창에 포커스가 간다
+		* 이후에 포커스가 없어도 엔터만 누르면 입력창에 입력가능
+		*/
+		if($('#login__email').length == 0) {
+			$('#infocus').focus();
 	        $('#infocus').keypress(function(event) {
-	        	// $('.chatting').animate({'top':'100px'});
-	        	 $('#btn-input').focus();
+				$('#btn-input').focus();
 	        });
-	    	  
-	      } else {
-	    	  $('#login__email').focus();
-	      }
-	      
-	      $(document).keypress(function(event) {
-	     //  $('.chatting').animate({'left':'100%'});
-	       $('#btn-input').focus();
-	      });
-	      
-	          
-    // 채팅 로드
-    $.ajax({
-        url:'chat/chat-ws',
-        success:function(result){
-          //console.log("result: " + result);
-          $('.chatting').html(result);
-      }
-    });
-   
-    // search 로드
-    $.ajax({
-        url:'search/search',
-        success:function(result){
-          //console.log("result: " + result);
-          $('.searchPage').html(result);
-      }
-    });
-   
-    
-    
-    	  $.fn.popup.defaults.pagecontainer = '.logincontainer';
+		} else {
+			$('#login__email').focus();
+		}
 
-    	    $('#basic').popup();
+		$(document).keypress(function(event) {
+			$('#btn-input').focus();
+		});
 
-    	  $('#fadeandscale').popup({
+		// 채팅 로드
+		$.ajax({
+			url:'chat/chat-ws',
+			success:function(result){
+				$('.chatting').html(result);
+			}
+		});
+   
+		// search 로드
+		$.ajax({
+			url:'search/search',
+			success:function(result){
+				$('.searchPage').html(result);
+			}
+		});
+    
+		$.fn.popup.defaults.pagecontainer = '.logincontainer';
+		$('#basic').popup();
+
+		$('#fadeandscale').popup({
     	    height:1000, 
-    	    width:800,
-    	    pagecontainer: '.logincontainer',
-    	    transition: 'all 0.5s'
+			width:800,
+			pagecontainer: '.logincontainer',
+			transition: 'all 0.5s'
+		});
 
-    	  });
+		$("#Register_email").keyup(function(){
+			var email = $("#Register_email").val();
 
+    	    if(email != 0){
+				if(isValidEmailAddress(email)) {  
+					$("#mail_check").css({"background": "url('<%=cp%>/resources/image/ok.png') no-repeat center", "backgroundSize":"30px"});
+				} else {
+					$("#mail_check").css({"background": "url('<%=cp%>/resources/image/no.png') no-repeat center", "backgroundSize":"30px"});
+				}
+			} else {
+				$("#mail_check").css({
+					"background-image": "none"
+				});     
+			}
+		});
 
-    	  $("#Register_email").keyup(function(){
+		$("#Register_password").keyup(function(){
+			var pass = $("#Register_password").val();
+			var reg_pwd = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 
-    	    var email = $("#Register_email").val();
+			if(pass != 0){
+				if(reg_pwd.test(pass)) { 
+					$("#pass_check").css({"background": "url('<%=cp%>/resources/image/ok.png') no-repeat center", "backgroundSize":"30px"});
+				} else {
+					$("#pass_check").css({"background": "url('<%=cp%>/resources/image/no.png') no-repeat center", "backgroundSize":"30px"});
+				}
+			} else {
+				$("#pass_check").css({
+					"background-image": "none"
+				});
+			}
+		});
 
-    	    if(email != 0)
-    	    {
-    	      if(isValidEmailAddress(email)) {  
-    	        $("#mail_check").css({"background": "url('<%=cp%>/resources/image/ok.png') no-repeat center", "backgroundSize":"30px"});
-    	      } else {
-    	        $("#mail_check").css({"background": "url('<%=cp%>/resources/image/no.png') no-repeat center", "backgroundSize":"30px"});
-    	      }
-    	    } else {
-    	      $("#mail_check").css({
-    	        "background-image": "none"
-    	      });     
-    	    }
+		$("#Register_password1").keyup(function(){
+			var pass = $("#Register_password").val();
+			var pass1 = $("#Register_password1").val();
 
-    	  });
+			if(pass != 0){
+				if(pass == pass1) { 
+					$("#pass1_check").css({"background": "url('<%=cp%>/resources/image/ok.png') no-repeat center", "backgroundSize":"30px"});
+				} else {
+					$("#pass1_check").css({"background": "url('<%=cp%>/resources/image/no.png') no-repeat center", "backgroundSize":"30px"});
+				}
+			} else {
+				$("#pass1_check").css({
+					"background-image": "none"
+				});     
+			}
+		});
 
-    	  $("#Register_password").keyup(function(){
+		$("#Register_num").keyup(function(){
+			var num = $("#Register_num").val();
+			var num_check = /^[0-9]+$/;
 
-    	    var pass = $("#Register_password").val();
-    	    var reg_pwd = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+			if(num != 0){
+				if(num_check.test(num)) { 
+					$("#num_check").css({"background": "url('<%=cp%>/resources/image/ok.png') no-repeat center", "backgroundSize":"30px"});
+				} else {
+					$("#num_check").css({"background": "url('<%=cp%>/resources/image/no.png') no-repeat center", "backgroundSize":"30px"});
+				}
+			} else {
+				$("#num_check").css({
+					"background-image": "none"
+				});
+			}
+		});
 
-    	    if(pass != 0)
-    	    {
-    	      if(reg_pwd.test(pass)) {  
-    	        $("#pass_check").css({"background": "url('<%=cp%>/resources/image/ok.png') no-repeat center", "backgroundSize":"30px"});
-    	      } else {
-    	        $("#pass_check").css({"background": "url('<%=cp%>/resources/image/no.png') no-repeat center", "backgroundSize":"30px"});
-    	      }
-    	    } else {
-    	      $("#pass_check").css({
-    	        "background-image": "none"
-    	      });     
-    	    }
-
-    	  });
-
-    	  $("#Register_password1").keyup(function(){
-
-    	    var pass = $("#Register_password").val();
-    	    var pass1 = $("#Register_password1").val();
-
-    	    if(pass != 0)
-    	    {
-    	      if(pass == pass1) { 
-    	        $("#pass1_check").css({"background": "url('<%=cp%>/resources/image/ok.png') no-repeat center", "backgroundSize":"30px"});
-    	      } else {
-    	        $("#pass1_check").css({"background": "url('<%=cp%>/resources/image/no.png') no-repeat center", "backgroundSize":"30px"});
-    	      }
-    	    } else {
-    	      $("#pass1_check").css({
-    	        "background-image": "none"
-    	      });     
-    	    }
-
-    	  });
-
-    	  $("#Register_num").keyup(function(){
-
-    	    var num = $("#Register_num").val();
-    	    var num_check = /^[0-9]+$/;
-
-    	    if(num != 0)
-    	    {
-    	      if(num_check.test(num)) { 
-    	        $("#num_check").css({"background": "url('<%=cp%>/resources/image/ok.png') no-repeat center", "backgroundSize":"30px"});
-    	      } else {
-    	        $("#num_check").css({"background": "url('<%=cp%>/resources/image/no.png') no-repeat center", "backgroundSize":"30px"});
-    	      }
-    	    } else {
-    	      $("#num_check").css({
-    	        "background-image": "none"
-    	      });     
-    	    }
-
-    	  });
-
-
-    	  function isValidEmailAddress(emailAddress) {
-    	    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-    	    return pattern.test(emailAddress);
-    	  }
-
-    	
-});
+		// 이메일 유효성 검사
+		function isValidEmailAddress(emailAddress) {
+			var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+			return pattern.test(emailAddress);
+		}	
+	});
     </script>
-
-
 </body>
-
 </html>

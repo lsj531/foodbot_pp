@@ -33,7 +33,6 @@ public class FoodDAOImpl implements FoodDAO {
 	public List<FoodVO> readRecipe(String fname) throws Exception {
 		return session.selectList(namespace+".readRecipe",fname);
 	}
-
 	
 	@Override
 	public void update(FoodVO vo) throws Exception {
@@ -50,8 +49,6 @@ public class FoodDAOImpl implements FoodDAO {
 		return null;
 	}
 
-	
-	
 	@Override
 	public FoodVO readNNGOne(String nng) throws Exception {
 		return session.selectOne(namespace+".readNNGOne",nng);
@@ -71,12 +68,9 @@ public class FoodDAOImpl implements FoodDAO {
 		return session.selectOne(namespace+".readTasteOne",taste);
 	}
 
-
-
 	@Override
 	public void createIngred(IngredVO vo) throws Exception {
 		session.insert(namespace+".createIngred",vo);
-		
 	}
 
 	@Override
@@ -113,9 +107,4 @@ public class FoodDAOImpl implements FoodDAO {
 	public FoodVO readFcode(String fcode) throws Exception {
 		return  session.selectOne(namespace+".readFcode",fcode);
 	}
-
-
-
-
-	
 }

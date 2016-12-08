@@ -23,7 +23,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Creative - Start Bootstrap Theme</title>
+<title>FoodBot</title>
 <!-- Bootstrap Core CSS -->
 <link href="../resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet" media="screen">

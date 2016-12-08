@@ -33,5 +33,4 @@ public class ChatServiceImpl implements ChatService {
 	public List<ChatVO> listAll() throws Exception {
 		return dao.listAll();
 	}
-
 }

@@ -18,15 +18,6 @@ public class MLPFunction implements ActivationFunction,GradientFunction,Nomaliza
 	@Override
 	public double tanh(double x) {
 		return Math.tanh(x);
-		//		if (x > 20)
-		//			return 1.0;
-		//		else if (x < -20)
-		//			return -1.0;
-		//		else {
-		//			double a = Math.exp(x);
-		//			double b = Math.exp(-x);
-		//			return (a - b) / (a + b);
-		//		}
 	}
 
 	@Override
@@ -74,15 +65,12 @@ public class MLPFunction implements ActivationFunction,GradientFunction,Nomaliza
 				sigma[i] = sum_tmp / (input[i].length - 1);
 				sigma[i] = Math.sqrt(sigma[i]);
 			}
-
-
 		}
 		for(int i=0 ; i<output.length ;i++) {
 			for(int j=0 ; j<output[i].length ; j++) {
 				output[i][j] = ((input[i][j] - mu[i]) / (input[i].length-1));
 			}
 		}
-
 		return output;
 	}
 
@@ -143,8 +131,6 @@ public class MLPFunction implements ActivationFunction,GradientFunction,Nomaliza
 				sigma[i] = sum_tmp / (input[i].length - 1);
 				sigma[i] = Math.sqrt(sigma[i]);
 			}
-
-
 		}
 
 		for(int i=0 ; i<inputList.size() ; i++) {
@@ -154,11 +140,6 @@ public class MLPFunction implements ActivationFunction,GradientFunction,Nomaliza
 			}
 			outputList.add((ArrayList<Double>) tmp);
 		}
-
 		return outputList;
 	}
-	
-	
-	
-
 }

@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.foodbot.nlp.RecipeVO;
-/*
- * 
- * 레시피를 조합하여 학습 입력 데이터를 생성해준다.
- */
+
+// Create train data using recipe DB.
 public class RecipeToTrainData {
 
 	private List<RecipeVO> trainInputList;

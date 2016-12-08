@@ -19,8 +19,6 @@ public class FoodVO {
 	private String nng;
 	private String nng_code;
 	
-	
-	
 	public String getTasteset() {
 		return tasteset;
 	}
@@ -45,8 +43,6 @@ public class FoodVO {
 	public void setNng_code(String nng_code) {
 		this.nng_code = nng_code;
 	}
-
-	
 	public String getFname() {
 		return fname;
 	}
@@ -59,6 +55,4 @@ public class FoodVO {
 	public void setFcode(String fcode) {
 		this.fcode = fcode;
 	}
-	
-	
 }

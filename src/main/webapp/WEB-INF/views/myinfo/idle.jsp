@@ -10,12 +10,12 @@
 <link
 	href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
 	rel="stylesheet" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 <style>
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
 .btn-radio {
 	width: 100%;
 }
@@ -57,6 +57,11 @@
 	width: 500px;
 	height: 100px;
 }
+
+h1, h2 {
+	font-family: 'Jeju Gothic', serif;
+}
+
 </style>
 </head>
 <body>
@@ -78,7 +83,7 @@
 							<input type="checkbox" id="left-item" class="hidden">
 						</div>
 						<div class="col-xs-1">
-							<h1>&nbsp&nbsp&nbspvs</h1>
+							<h1>&nbsp;&nbsp;&nbsp;vs</h1>
 						</div>
 						<div class="col-xs-5 pull-right">
 							<img id="right-food" src=""
@@ -115,10 +120,8 @@
 		</div>
 	</div>
 
-
 	<script>
 		$(document).ready(function() {
-
 			$.ajax({
 				url : '/idle/istrain',
 				type : 'get',
@@ -136,7 +139,7 @@
 						
 					} else if (data.result === 0) {
 						//test1(); // 이상형월드컵 실행
-						  $(".istrain2").html("<h2>음식 이상형 월드컵을 통해 내 취향을 더 확실히 학습시킬 수 있습나다. </h2>");
+						  $(".istrain2").html("<h2>음식 이상형 월드컵을 통해 내 취향을 더 확실히 학습시킬 수 있습니다. </h2>");
 						$(".istrain").css("display","block");
 						setFoodImage();
 					}
@@ -147,10 +150,9 @@
 			});
 
 		});
-
 		
 		var result="";
-		//음식 배열 저장 -> 나중에 .json 파일로 관리 합시다.
+		// 음식 배열 -> 추후 .json 파일로 관리
 		var foodArray = [ {
 			name : "감자수제비",
 			ingredient : "밀가루,육수,감자|양파,호박,파,간장,계란",
@@ -199,7 +201,55 @@
 			taste : "구수한,뜨거운",
 			code : "1000100000020007",
 			imgPath : "f_016"
-		} ];
+		}, {
+			name : "테스트 1",
+			ingredient : "된장,육수|소고기,두부,양파,파,고추",
+			taste : "구수한,뜨거운",
+			code : "1000100000020007",
+			imgPath : "f_049"
+		}, {
+			name : "테스트 2",
+			ingredient : "된장,육수|소고기,두부,양파,파,고추",
+			taste : "구수한,뜨거운",
+			code : "1000100000020007",
+			imgPath : "f_050"
+		}, {
+			name : "테스트 3",
+			ingredient : "된장,육수|소고기,두부,양파,파,고추",
+			taste : "구수한,뜨거운",
+			code : "1000100000020007",
+			imgPath : "f_051"
+		}, {
+			name : "테스트 4",
+			ingredient : "된장,육수|소고기,두부,양파,파,고추",
+			taste : "구수한,뜨거운",
+			code : "1000100000020007",
+			imgPath : "f_052"
+		}, {
+			name : "테스트 5",
+			ingredient : "된장,육수|소고기,두부,양파,파,고추",
+			taste : "구수한,뜨거운",
+			code : "1000100000020007",
+			imgPath : "f_053"
+		}, {
+			name : "테스트 6",
+			ingredient : "된장,육수|소고기,두부,양파,파,고추",
+			taste : "구수한,뜨거운",
+			code : "1000100000020007",
+			imgPath : "f_054"
+		}, {
+			name : "테스트 7",
+			ingredient : "된장,육수|소고기,두부,양파,파,고추",
+			taste : "구수한,뜨거운",
+			code : "1000100000020007",
+			imgPath : "f_055"
+		}, {
+			name : "테스트 8",
+			ingredient : "된장,육수|소고기,두부,양파,파,고추",
+			taste : "구수한,뜨거운",
+			code : "1000100000020007",
+			imgPath : "f_056"
+		}];
 
 		function setFoodImage() {
 			$('#left-food').attr("src",
@@ -223,64 +273,63 @@
 			imgArray.append(divThumb);
 		}
 
-
 		var foodArrayForNextRound = [];
 
 		$('.btn-radio').click(
-				function(e) {
-					var unselected = $('.btn-radio').not(this).removeClass(
-							'active').siblings('input').prop('checked', false)
-							.siblings('.img-radio').siblings('button').text();
+			function(e) {
+				var unselected = $('.btn-radio').not(this).removeClass(
+						'active').siblings('input').prop('checked', false)
+						.siblings('.img-radio').siblings('button').text();
 
-					var selected = $(this).addClass('active').siblings('input')
-							.prop('checked', true).siblings('.img-radio')
-							.siblings('button').text();
+				var selected = $(this).addClass('active').siblings('input')
+						.prop('checked', true).siblings('.img-radio')
+						.siblings('button').text();
 
-					//선택된 푸드 객체
-					var foodSel = (foodArray.find(function(el) {
-						return el.name === selected;
-					}));
-					//선택안된 푸드 객체
-					var foodUnsel = (foodArray.find(function(el) {
-						return el.name === unselected;
-					}));
+				//선택된 푸드 객체
+				var foodSel = (foodArray.find(function(el) {
+					return el.name === selected;
+				}));
+				//선택안된 푸드 객체
+				var foodUnsel = (foodArray.find(function(el) {
+					return el.name === unselected;
+				}));
 
-					//선택된 푸드 객체의 코드
-					console.log("선택:", foodSel.name, foodSel.code);
-					//선택안된 푸드 객체의 코드
-					//		    console.log(foodUnsel.name,foodUnsel.code);
-          result +=  foodSel.code+ "," +foodUnsel.code+"|";
-					foodArrayForNextRound.push(foodSel);
+				//선택된 푸드 객체의 코드
+				console.log("선택:", foodSel.name, foodSel.code);
+				//선택안된 푸드 객체의 코드
+				//		    console.log(foodUnsel.name,foodUnsel.code);
+         result +=  foodSel.code+ "," +foodUnsel.code+"|";
+				foodArrayForNextRound.push(foodSel);
 
-					if (foodArray.length == 2) {
-						if (foodArrayForNextRound.length == 1) {
-							$(".form-horizontal").html("<h1>완료!</h1>");
-							console.log("끝");
-							$.ajax({
-								url : '/idle/idle',
-								dataType : 'text',
-								data : {
-									result : result
-								},
-								type : 'GET',
-								success : function(json) {
-									//alert('성공');
-								},
-								error : function(result) {
-									alert('실패' + result);
-								}
-							});
-							return;
-						}
-						foodArray = foodArrayForNextRound;
-						$('#round').text(foodArray.length + "강");
-						foodArrayForNextRound = [];
-					} else {
-						foodArray = foodArray.slice(2);
+				if (foodArray.length == 2) {
+					if (foodArrayForNextRound.length == 1) {
+						$(".form-horizontal").html("<h1>완료!</h1>");
+						console.log("끝");
+						$.ajax({
+							url : '/idle/idle',
+							dataType : 'text',
+							data : {
+								result : result
+							},
+							type : 'GET',
+							success : function(json) {
+								//alert('성공');
+							},
+							error : function(result) {
+								alert('실패' + result);
+							}
+						});
+						return;
 					}
-					setFoodImage();
-					setThumbImage(foodSel.imgPath);
-				});
+					foodArray = foodArrayForNextRound;
+					$('#round').text(foodArray.length + "강");
+					foodArrayForNextRound = [];
+				} else {
+					foodArray = foodArray.slice(2);
+				}
+				setFoodImage();
+				setThumbImage(foodSel.imgPath);
+			});
 	</script>
 </body>
 </html>

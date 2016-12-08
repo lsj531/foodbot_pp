@@ -1,5 +1,5 @@
 /**
- * Created by minho on 2016. 11. 14..
+ * Created by minho on 2016. 11. 14.
  */
 
 var width = 800;
@@ -116,7 +116,7 @@ function test1() {
 					var clickIndex = data.indexOf(d);
 					var unclickIndex = null;
 					//data[clickIndex] <- 여기에 클릭한 음식데이터 정보 있으니까
-					//이거 같다가 쓰면되요
+					//이거 갖다가 쓰면되요
 					unclickIndex = ((clickIndex % 2) == 1) ? clickIndex - 1 : clickIndex + 1;
 					console.log(clickIndex);
 					console.log(unclickIndex);

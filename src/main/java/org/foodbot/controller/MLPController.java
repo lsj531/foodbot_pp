@@ -36,12 +36,10 @@ import com.google.gson.JsonObject;
 /*
  * 채팅 컨트롤러 
  * - 채팅 창
- * 
  */
 @Controller
 @RequestMapping("/mlp/*")
 public class MLPController {
-
 
 	@Inject
 	private FoodService fservice;
@@ -58,12 +56,10 @@ public class MLPController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MLPController.class);
 
-	/*
-	 * 사용자가 요청한 메시지를 분석/분류한다.
-	 */
+	//사용자가 요청한 메시지를 분석/분류한다.
 	@RequestMapping(value="/message",method=RequestMethod.POST)
-	public void messagePOST(@ModelAttribute("m") String m 
-			,HttpServletResponse response,HttpServletRequest request) throws Exception {
+	public void messagePOST(@ModelAttribute("m") String m, 
+			HttpServletResponse response, HttpServletRequest request) throws Exception {
 
 		HttpSession session = request.getSession();
 
@@ -76,12 +72,13 @@ public class MLPController {
 		ms.setComoran(msg);
 
 		System.out.println("handleTextMessage result : ");
-		for(int i= 0 ; i<ms.getMp().getCodeList().size(); i++) {
+		for(int i= 0; i<ms.getMp().getCodeList().size(); i++) {
 			System.out.print(" "+ms.getMp().getCodeList().get(i));
 			System.out.print(" "+ms.getMp().getWordList().get(i));
-		}System.out.println();
+		}
+		System.out.println();
 
-		PersonalRecipe recipe = new PersonalRecipe(fservice,ms.getMp());
+		PersonalRecipe recipe = new PersonalRecipe(fservice, ms.getMp());
 		recipe.setRAttrRecipe();
 		List<String> RMajorAttrList = recipe.getMajorRecipe();
 		//		List<String> RSubAttrList = recipe.getSubRecipe();
@@ -128,16 +125,13 @@ public class MLPController {
 		System.out.println("**************속성은" + attr.length);
 		for(int i=0 ; i<attr.length ; i++) {
 			System.out.print(attr[i] +" ");
-		}System.out.println();
-
-
+		}
+		System.out.println();
 
 		/*
-		 * 
 		 * 사용자가 검색을 한 모든 속성을
 		 * 지속적으로 업데이트한다.
 		 * 이 세션 객체는 사용자가 음식선택을 하면 사라져야한다.
-		 */
 		/*
 		double[] sattr = null;
 		if(session.getAttribute("attr") !=null) {
@@ -172,10 +166,7 @@ public class MLPController {
 
 
 		/*
-		 * 
-		 * 
 		 * Nomalization 
-		 */
 		/*
 		MLPFunction mlpFunc = new MLPFunction();
 		attr = mlpFunc.setNomalization(attr);
@@ -197,13 +188,10 @@ public class MLPController {
 		}
 
 		if(flag == true) {
-
-			/*
-			 * user의 개인 학습데이터db 가 없으면 생성한다.
-			 */
+			// user의 개인 학습데이터db 가 없으면 생성한다.
 			MLPWeightVO mvo = mservice.read(uid);
 			if(mvo == null) {
-				//유저가 사용할 최초의 학습데이터 경로를 불러온다.
+				// 유저가 사용할 최초의 학습데이터 경로를 불러온다.
 				InitTrainDataVO ivo = iservice.read();
 				String path = ivo.getPath();
 
@@ -228,7 +216,7 @@ public class MLPController {
 				int[] dataSet = {1};
 //				double[][] batchInputData = {attr};
 				double[] iattr = new double[attr.length];
-				System.out.println("총 속성 ㅇ갯수");
+				System.out.println("총 속성 갯수");
 				for(int i=0 ; i<tattr.length ; i++) {
 					for(int j =0 ;j<tattr[i].length; j++) {
 						System.out.print(tattr[i][j] + " ");
@@ -239,7 +227,7 @@ public class MLPController {
 						iattr[j] += tattr[i][j];
 					}
 				}
-				System.out.println("**************검색할할 속성은" + iattr.length);
+				System.out.println("**************검색할 속성은" + iattr.length);
 				for(int i=0 ; i<iattr.length ; i++) {
 					System.out.print(iattr[i] +" ");
 				}System.out.println();
@@ -247,7 +235,7 @@ public class MLPController {
 				double[][] batchInputData = {iattr};
 				new Init().initBias(1);
 				Classification cf = new Classification(dataSet, batchInputData);
-				// 테스트를 햇으니 사용자가 이 데이터를 맘에 들어하면 온라인학습/추가저장을 실시하여야 한다 ...
+				// 테스트를 했으니 사용자가 이 데이터를 맘에 들어하면 온라인학습/추가저장을 실시하여야 한다.
 
 				double[] result = cf.getResult();
 				TrainDataName tdn = new TrainDataName(fservice);
@@ -259,7 +247,7 @@ public class MLPController {
 				System.out.println("입력에대한 결과 음식은 "+outputName.get((int) result[0]) + " 입니다");
 				System.out.println("입력에대한 결과 음식은 "+outputName.get((int) result[1]) + " 입니다");
 
-				// 데이터가 생겼으므로 추가학습 가능표시로 업데이트 한다 .
+				// 데이터가 생겼으므로 추가학습 가능표시로 업데이트 한다.
 				init.SaveWeight(Config.USER_TRAIN_WEIGHT+vo.getWeight_path());
 
 			} else {
@@ -273,7 +261,7 @@ public class MLPController {
 				int[] dataSet = {1};
 //				double[][] batchInputData = {attr};
 				double[] iattr = new double[attr.length];
-				System.out.println("총 속성 ㅇ갯수");
+				System.out.println("총 속성 갯수");
 				for(int i=0 ; i<tattr.length ; i++) {
 					for(int j =0 ;j<tattr[i].length; j++) {
 						System.out.print(tattr[i][j] + " ");
@@ -284,7 +272,7 @@ public class MLPController {
 						iattr[j] += tattr[i][j];
 					}
 				}
-				System.out.println("**************검색할할 속성은" + iattr.length);
+				System.out.println("**************검색할 속성은" + iattr.length);
 				for(int i=0 ; i<iattr.length ; i++) {
 					System.out.print(iattr[i] +" ");
 				}System.out.println();
@@ -303,16 +291,13 @@ public class MLPController {
 				System.out.println("입력에대한 결과 음식은 "+outputName.get((int) result[0]) + " 입니다");
 				System.out.println("입력에대한 결과 음식은 "+outputName.get((int) result[1]) + " 입니다");
 
-
 				init.SaveWeight(Config.USER_TRAIN_WEIGHT+mvo.getWeight_path());
-
 			}
 
 			List<FoodVO> fvo = fservice.readFname(responseMessage);
 			String food_path =fvo.get(0).getImage_path();
-			/*
-			 * server의 응답을 디비에 저장
-			 */
+			
+			// server의 응답을 디비에 저장
 			ChatVO chatVO = new ChatVO();
 			chatVO.setUid(uid);
 			chatVO.setImage_path(food_path);
@@ -328,11 +313,8 @@ public class MLPController {
 			obj.addProperty("path", food_path);
 			response.setContentType("application/x-json; charset=UTF-8");
 			response.getWriter().print(obj);
-
 		} else {
-			/*
-			 * server의 응답을 디비에 저장
-			 */
+			//server의 응답을 디비에 저장
 			ChatVO chatVO = new ChatVO();
 			chatVO.setUid(uid);
 			chatVO.setSender("server");
@@ -350,7 +332,6 @@ public class MLPController {
 	}
 
 	/*
-	 * 
 	 * 사용자가 음식을 선택하면
 	 * 지금까지 쌓아온 선택속성과 선택된 음식을  tattr 에 저장한다
 	 */
@@ -364,9 +345,7 @@ public class MLPController {
 			MLPWeightVO mlpVO = mservice.read(vo.getUid());
 
 			if(mlpVO != null) {
-
 				if(session.getAttribute("attr")!=null ) {
-
 					double[][] attr = (double[][])session.getAttribute("attr");
 					int[] output= new int[attr.length];
 					TrainDataName tdn = new TrainDataName(fservice);
@@ -402,10 +381,9 @@ public class MLPController {
 						session.removeAttribute("attr");
 
 						JsonObject obj = new JsonObject();
-						obj.addProperty("msg", "succes");
+						obj.addProperty("msg", "success");
 						response.setContentType("application/x-json; charset=UTF-8");
 						response.getWriter().print(obj);
-
 					} else {
 						JsonObject obj = new JsonObject();
 						obj.addProperty("msg", "fail");
@@ -418,10 +396,7 @@ public class MLPController {
 					response.setContentType("application/x-json; charset=UTF-8");
 					response.getWriter().print(obj);
 				}
-
 			}
 		}
-
-
 	}
 }

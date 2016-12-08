@@ -3,7 +3,6 @@ package org.foodbot.mlp;
 import org.foodbot.config.Config;
 
 /*
- * 
  * 복잡하다 나중에하자
  */
 public class OnLineLearningFileManage {

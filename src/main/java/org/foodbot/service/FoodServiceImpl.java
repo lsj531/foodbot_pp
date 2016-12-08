@@ -48,7 +48,6 @@ public class FoodServiceImpl implements FoodService {
 		return null;
 	}
 
-	
 	@Override
 	public FoodVO readNNGOne(String nng) throws Exception {
 		return dao.readNNGOne(nng);
@@ -108,8 +107,4 @@ public class FoodServiceImpl implements FoodService {
 	public FoodVO readFcode(String fcode) throws Exception {
 		return dao.readFcode(fcode);
 	}
-
-
-
-
 }

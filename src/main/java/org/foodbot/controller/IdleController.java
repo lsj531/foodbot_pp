@@ -33,7 +33,6 @@ import com.google.gson.JsonObject;
 /*
  * 채팅 컨트롤러 
  * - 채팅 창
- * 
  */
 @Controller
 @RequestMapping("/idle/*")
@@ -48,11 +47,10 @@ public class IdleController {
 
 	private static final Logger logger = LoggerFactory.getLogger(IdleController.class);
 
-
 	@RequestMapping(value="/istrain", method=RequestMethod.GET)
-	public void istrainWolrdCup(@ModelAttribute("result") String result, HttpServletRequest request
+	public void istrainWorldCup(@ModelAttribute("result") String result, HttpServletRequest request
 								,HttpServletResponse response) throws Exception {
-		logger.info("idleWolrdCup get...");
+		logger.info("idleWorldCup get...");
 
 		HttpSession session = request.getSession();
 		MemberVO vo = (MemberVO) session.getAttribute("login");
@@ -71,15 +69,11 @@ public class IdleController {
 				response.getWriter().print(obj);
 			}
 		}
-
-
-
 	}
 
-
 	@RequestMapping(value="/idle", method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
-	public void idleWolrdCup(@ModelAttribute("result") String result, HttpServletRequest request) throws Exception {
-		logger.info("idleWolrdCup get...");
+	public void idleWorldCup(@ModelAttribute("result") String result, HttpServletRequest request) throws Exception {
+		logger.info("idleWorldCup get...");
 		System.out.println(result);
 		HttpSession session = request.getSession();
 		MemberVO vo = (MemberVO) session.getAttribute("login");
@@ -105,7 +99,6 @@ public class IdleController {
 			init.SaveWeight(Config.USER_TRAIN_WEIGHT+mlpVO2.getWeight_path());
 		} 
 
-
 		String[] idleSet = result.split("\\|");
 		String[][] fcodeList = new String[idleSet.length][2];
 		String[] fnameList = new String[idleSet.length];
@@ -117,16 +110,13 @@ public class IdleController {
 		}
 		System.out.println("여기");
 		System.out.println(result);
-		System.out.println("d이름이름");
+		System.out.println("이름이름");
 		for(int i =0; i<fcodeList.length ; i++) {
 			for(int j=0 ; j<fcodeList[i].length ; j++) {
 				System.out.print(fcodeList[i][j]+ " ");
 			}System.out.println();
 		}
 		if(!result.isEmpty()) {
-
-
-
 			TrainDataName td = new TrainDataName(fservice);
 			List<String> dataName =td.getDataName();
 			List<String> dataOutputName =td.getOutputName();
@@ -138,9 +128,7 @@ public class IdleController {
 			List<String> RSubAttrList;
 			List<String> RTasteAttrList;
 
-			
 			for(int i=0; i<fcodeList.length ; i++) {
-
 				for(int s=0 ; s<fcodeList[i].length; s++) {
 					List<FoodVO> list = new ArrayList<FoodVO>();		
 					list.add(fservice.readFcode(fcodeList[i][s]));
@@ -156,8 +144,7 @@ public class IdleController {
 						System.out.print(RTasteAttrList.get(j) +" ");
 					}System.out.println();
 
-					// 이상형월드컵 선택된 음식은 가중치 업
-					if(s==0) {
+					if(s==0) {	// 이상형월드컵 선택된 음식은 가중치 업
 
 						// 이상형월드컵 결과 코드에 대한 음식명을 찾아온다
 						for(int n=0 ; n<initRecipe.getRFoodNameList().size(); n++) {
@@ -193,9 +180,7 @@ public class IdleController {
 								System.out.print(attr[j][k]+ " ");
 							}System.out.println();
 						}
-
-						// 선택 안된 음식은 가중치 다운
-					} else if(s ==1) {
+					} else if(s ==1) {	// 선택 안된 음식은 가중치 다운
 						for(int j=0 ; j<attr.length ; j++) {
 							// 주 재료 가중치 결정
 							for(int k=0 ; k<RMajorAttrList.size() ; k++) {
@@ -218,7 +203,6 @@ public class IdleController {
 						}
 					}
 				}
-
 			}
 			// 선택된 이미지를 output num으로 치환해준다.
 			for(int i=0 ; i<dataOutputName.size(); i++) {
@@ -233,7 +217,8 @@ public class IdleController {
 			for(int i=0 ; i<attr.length ; i++) {
 				for(int j=0  ; j<attr[i].length ;j++) {
 					System.out.print(attr[i][j] + " ");
-				}System.out.println();
+				}
+				System.out.println();
 			}
 			Init init = new Init();
 
@@ -246,7 +231,5 @@ public class IdleController {
 			mlpservice.updateLearningB(mlpVO);
 			System.out.println("추가학습 가능");
 		}
-
 	}
-
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 /*
  * 선행조건 : weight 초기화
- * 
  * feedFoward를 통해
  * 결과 음식을 출력시켜준다.
  */
@@ -17,7 +16,7 @@ public class Classification {
 		this.dataSet = dataSet;
 		feedFoward = new FeedFoward();
 		activationList = feedFoward.makeActivate(feedFoward.feedForwardCalc(dataSet, batchInputData));
-		displayResults();	
+		displayResults();
 	}
 
 	public void displayResults() {
@@ -57,5 +56,4 @@ public class Classification {
 	public void setResult(double[] result) {
 		this.result = result;
 	}
-
 }

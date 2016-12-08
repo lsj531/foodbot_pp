@@ -14,53 +14,53 @@ public class TrainDataName {
 
 	private List<String> dataName;
 	private List<String> dataCode;
-	
+
 	private List<String> tasteName;
 
 	private List<String> outputName;
 	private List<String> outputCode;
 
-	@Inject 
+	@Inject
 	private FoodService fservice;
+
 	public TrainDataName(FoodService fservice) throws Exception {
 		this.fservice = fservice;
 
 		dataName = new ArrayList<String>();
 		dataCode = new ArrayList<String>();
-		
+
 		tasteName = new ArrayList<String>();
 
 		outputName = new ArrayList<String>();
 		outputCode = new ArrayList<String>();
 
 		setData();
-
 	}
 
 	// data set for neural network train
 	private void setData() throws Exception {
 		List<IngredVO> ingredList = fservice.readIngredAll();
-		List<TasteVO> tasteList = 	fservice.readTasteAll();
-		List<FoodVO> foodList = 	fservice.readFoodAll();
+		List<TasteVO> tasteList = fservice.readTasteAll();
+		List<FoodVO> foodList = fservice.readFoodAll();
 
-		for(int i=0 ;i<foodList.size() ; i++) {
+		for (int i = 0; i < foodList.size(); i++) {
 			outputName.add(foodList.get(i).getFname());
 			outputCode.add(foodList.get(i).getFcode());
 		}
-		for(int i=0 ; i<ingredList.size() ; i++) {
+		for (int i = 0; i < ingredList.size(); i++) {
 			dataName.add(ingredList.get(i).getIngred());
 			dataCode.add(ingredList.get(i).getIngred_code());
 		}
-		for(int i=0 ; i<tasteList.size() ; i++) {
+		for (int i = 0; i < tasteList.size(); i++) {
 			dataName.add(tasteList.get(i).getTaste());
 			dataCode.add(tasteList.get(i).getTaste_code());
-			
+
 			tasteName.add(tasteList.get(i).getTaste());
 		}
 
-		//		for(int i=0; i<dataName.size() ; i++) {
-		//			System.out.println(dataName.get(i));
-		//		}System.out.println(dataName.size());
+		// for(int i=0; i<dataName.size() ; i++) {
+		// System.out.println(dataName.get(i));
+		// }System.out.println(dataName.size());
 	}
 
 	public List<String> getDataName() {
@@ -98,8 +98,4 @@ public class TrainDataName {
 	public List<String> getTasteName() {
 		return tasteName;
 	}
-
-
-	
-
 }

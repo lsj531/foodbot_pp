@@ -69,16 +69,11 @@ body {
 				
 				request.removeAttribute("result");
 		  		}
-		%>
+				%>
 					
 				</div>
 			</div>
 		</div>
-		<!--
-        <div class=" hero-unit navbar-fixed-bottom">
-            <p>문의번호 : 010-123-4567</p>
-        </div>
-            -->
 	</div>
 	<script src="js/jquery.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>

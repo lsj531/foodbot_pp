@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /*
  * 채팅 컨트롤러 
  * - 채팅 창
- * 
  */
 @Controller
 @RequestMapping("/chat/*")
@@ -33,13 +32,11 @@ public class ChatController {
 	@RequestMapping(value = "/chat", method=RequestMethod.GET)
 	public void viewChatPage() {
 		logger.info("viewChatPage get...");
-		
 	}
 	
 	@RequestMapping("/chat-ws")
     public void viewPaintingPage(@ModelAttribute("message") String message) throws Exception {
 //		logger.info("viewPaintingPageviewPaintingPage get...");
-//		System.out.println("view " + chat);
 		System.out.println("viewview "+message); 
 	
     }

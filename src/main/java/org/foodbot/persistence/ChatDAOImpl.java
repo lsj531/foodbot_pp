@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ChatDAOImpl implements ChatDAO {
-	
 	private static String namespace = "org.foodbot.mapper.ChatMapper";
 
 	@Inject
@@ -19,6 +18,7 @@ public class ChatDAOImpl implements ChatDAO {
 	
 	@Override
 	public void create(ChatVO vo) throws Exception {
+		System.out.println("vo >> "+vo.getContent());
 		session.insert(namespace+".create",vo);
 	}
 
@@ -36,6 +36,4 @@ public class ChatDAOImpl implements ChatDAO {
 	public List<ChatVO> listAll() throws Exception {
 		return session.selectList(namespace+".listAll");
 	}
-
-
 }

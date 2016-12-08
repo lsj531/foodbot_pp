@@ -66,11 +66,13 @@ path.line {
 	stroke-width: 1px;
 	stroke: red;
 }
+
+.row-fluid .span5 {
+	width: 54%;
+}
 </style>
 </head>
 <body>
-
-
 	<div class="span1">
 		<form method="post" action="train">
 			<h3>train comment</h3>
@@ -96,15 +98,11 @@ path.line {
 	</div>
 
 	<script>
-		
-		$(document).ready(function() {
-
-			$("#goTrain").on("click", function() {
-				costRequest();
-			});
+	$(document).ready(function() {
+		$("#goTrain").on("click", function() {
+			costRequest();
 		});
-		
-		  
+	});
 	</script>
 </body>
 </html>

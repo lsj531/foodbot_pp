@@ -47,6 +47,4 @@ public class ChatVO {
 	public void setCredate(Date credate) {
 		this.credate = credate;
 	}
-	
-	
 }

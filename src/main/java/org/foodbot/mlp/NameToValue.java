@@ -3,8 +3,8 @@ package org.foodbot.mlp;
 import java.util.List;
 
 import org.foodbot.service.FoodService;
+
 /*
- * 
  * 음식명이나 속셩명을  레이블 및 수치화 한다.
  */
 public class NameToValue {
@@ -41,6 +41,4 @@ public class NameToValue {
 		}
 		return output;
 	}
-	
-	
 }
