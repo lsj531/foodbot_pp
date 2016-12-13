@@ -18,9 +18,7 @@ public interface FoodDAO {
 	public FoodVO readFcode(String fcode) throws Exception;
 	public List<FoodVO> readRecipe(String fname) throws Exception;
 	public List<FoodVO> readRecipeAll() throws Exception;
-	public void update(FoodVO vo) throws Exception;
 	public void delete(String fcode) throws Exception;
-	public List<FoodVO> listAll() throws Exception;
 	
 	public FoodVO readNNGOne(String nng) throws Exception;
 	public MorpVO readMorpOne(String morg) throws Exception;
@@ -30,4 +28,11 @@ public interface FoodDAO {
 	public List<IngredVO> readIngredAll() throws Exception;
 	public List<TasteVO> readTasteAll() throws Exception;
 	public List<FoodVO> readFoodAll() throws Exception;
+
+	public List<FoodVO> listAll() throws Exception;
+	public void update(FoodVO vo) throws Exception;
+	public List<FoodVO> listK();
+	public List<FoodVO> listJ();
+	public List<FoodVO> listC();
+	public List<FoodVO> listW();
 }

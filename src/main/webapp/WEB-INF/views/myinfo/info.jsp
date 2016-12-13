@@ -65,7 +65,7 @@ h1	{
 }
 
 iframe {
-	padding-left: 20%;
+	padding-left: 18.5%;
 }
 
 
@@ -78,7 +78,7 @@ iframe {
 
 #sidetab-fixed {
 	position: fixed;
-	top: 350px;
+	top: 300px;
 	left: 0;
 	z-index: 10000;
 	-webkit-padding-start: 0;
@@ -97,9 +97,6 @@ img {
 }
 
 </style>
-    
-
-
 </head>
 
 <body id="page-top">
@@ -134,7 +131,7 @@ img {
 	</nav>
 
 	
-	<img src="<%=cp%>/resources/img/banner/5.jpg" width="100%" height="30%" />
+	<img src="<%=cp%>/resources/img/banner/5.jpg" width="100%" height="25%" />
 	<div class="infotitle">
 		<section>
 			<h1>내 정보</h1>
@@ -202,8 +199,9 @@ img {
 	 -->
 	
 	<ul id="sidetab-fixed">
-		<li class="chart"><img alt="" src="/resources/img/icon/bars-chart.png" width="100px" height="100px" onclick='change("/myinfo/chart")' style="padding-top:10px"></li>
-		<li class="idle"><img alt="" src="/resources/img/icon/survey_g.png" width="100px" height="100px" onclick='change("/myinfo/idle")'style="padding-top:10px"></li>
+		<li class="chart"><img alt="chart" src="/resources/img/icon/bars-chart.png" width="100px" height="100px" onclick='change("/myinfo/chart")' style="padding-top:10px"></li>
+		<li class="idle"><img alt="idle" src="/resources/img/icon/survey_g.png" width="100px" height="100px" onclick='change("/myinfo/idle")'style="padding-top:10px"></li>
+		<li class="list"><img alt="list" src="/resources/img/icon/list.png" width="100px" height="100px" onclick='change("/myinfo/list")'style="padding-top:10px"></li>
 		</ul>
 	<iframe id="frame" src="/myinfo/chart" style="border: none;" width="100%" height="700px">
 	</iframe>

@@ -72,7 +72,7 @@ h1, h2 {
 				<form class="form-horizontal well" role="form">
 					<div class="row">
 						<div class="col-xs-11">
-							<h1 id="round" style="text-align: center; padding-left: 10%">8강</h1>
+							<h1 id="round" style="text-align: center; padding-left: 10%">16강</h1>
 						</div>
 					</div>
 					<div class="row">
@@ -91,26 +91,13 @@ h1, h2 {
 							<button type="button" class="btn btn-primary btn-radio"></button>
 							<input type="checkbox" id="right-item" class="hidden">
 						</div>
-						<!--<div class="col-xs-4">-->
-						<!--<img src="http://placehold.it/160x100" class="img-responsive img-radio">-->
-						<!--<button type="button" class="btn btn-primary btn-radio">Right</button>-->
-						<!--<input type="checkbox" id="right-item" class="hidden">-->
-						<!--</div>-->
 					</div>
 					<div class="row space-20">
 						<div class="col-xs-12">
-							<div id="thumbcarousel" class="carousel slide"
-								data-interval="false">
+							<div id="thumbcarousel" class="carousel slide" data-interval="false">
 								<div class="carousel-inner">
 									<div id="container" class="item active"></div>
 								</div>
-								<!-- /carousel-inner -->
-								<!--<a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev">-->
-								<!--<span class="glyphicon glyphicon-chevron-left"></span>-->
-								<!--</a>-->
-								<!--<a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next">-->
-								<!--<span class="glyphicon glyphicon-chevron-right"></span>-->
-								<!--</a>-->
 							</div>
 							<!-- /thumbcarousel -->
 						</div>
@@ -202,53 +189,53 @@ h1, h2 {
 			code : "1000100000020007",
 			imgPath : "f_016"
 		}, {
-			name : "테스트 1",
-			ingredient : "된장,육수|소고기,두부,양파,파,고추",
-			taste : "구수한,뜨거운",
-			code : "1000100000020007",
-			imgPath : "f_049"
+			name : "짜장면",
+			ingredient : "면,춘장|감자,양파,돼지고기,양배추,간장,굴소스,마늘,설탕",
+			taste : "짭짤한,느끼한,따뜻한,쫀득한",
+			code : "3000100000060001",
+			imgPath : "f_044"
 		}, {
-			name : "테스트 2",
-			ingredient : "된장,육수|소고기,두부,양파,파,고추",
-			taste : "구수한,뜨거운",
-			code : "1000100000020007",
-			imgPath : "f_050"
+			name : "고추잡채",
+			ingredient : "돼지고기,고추기름|양파,피망,버섯,설탕,후추,맛술,간장,참기름,굴소스",
+			taste : "매콤한,고소한,따뜻한,쫄깃한",
+			code : "3000100000080001",
+			imgPath : "f_047"
 		}, {
-			name : "테스트 3",
-			ingredient : "된장,육수|소고기,두부,양파,파,고추",
-			taste : "구수한,뜨거운",
-			code : "1000100000020007",
+			name : "돈까스",
+			ingredient : "돼지고기,밀가루,계란,빵가루|",
+			taste : "바삭한,달콤한,담백한,느끼한,따뜻한",
+			code : "2000100000050001",
 			imgPath : "f_051"
 		}, {
-			name : "테스트 4",
-			ingredient : "된장,육수|소고기,두부,양파,파,고추",
-			taste : "구수한,뜨거운",
-			code : "1000100000020007",
-			imgPath : "f_052"
-		}, {
-			name : "테스트 5",
-			ingredient : "된장,육수|소고기,두부,양파,파,고추",
-			taste : "구수한,뜨거운",
-			code : "1000100000020007",
-			imgPath : "f_053"
-		}, {
-			name : "테스트 6",
-			ingredient : "된장,육수|소고기,두부,양파,파,고추",
-			taste : "구수한,뜨거운",
-			code : "1000100000020007",
+			name : "메밀",
+			ingredient : "면,간장|오이,다시마,소금,김,맛술",
+			taste : "시원한,부드러운",
+			code : "2000100000060001",
 			imgPath : "f_054"
 		}, {
-			name : "테스트 7",
-			ingredient : "된장,육수|소고기,두부,양파,파,고추",
-			taste : "구수한,뜨거운",
-			code : "1000100000020007",
+			name : "회덮밥",
+			ingredient : "회,밥,고추장|당근,양배추,오이,깻잎",
+			taste : "시원한,물컹한,담백한",
+			code : "2000100000070001",
 			imgPath : "f_055"
 		}, {
-			name : "테스트 8",
-			ingredient : "된장,육수|소고기,두부,양파,파,고추",
-			taste : "구수한,뜨거운",
-			code : "1000100000020007",
-			imgPath : "f_056"
+			name : "햄버거",
+			ingredient : "빵,소고기|토마토,상추,마요네즈,케첩",
+			taste : "담백한,짭짤한,물컹한,따뜻한",
+			code : "4000100000090001",
+			imgPath : "f_057"
+		}, {
+			name : "치킨",
+			ingredient : "닭고기,튀김가루|후추",
+			taste : "짭짤한,담백한,따뜻한,쫄깃한",
+			code : "4000100000050001",
+			imgPath : "f_060"
+		}, {
+			name : "부리또",
+			ingredient : "소고기,또띠아,사워크림|설탕,마늘,감자,치즈,소금,할라피뇨",
+			taste : "담백한,물컹한,싱거운",
+			code : "4000100000090003",
+			imgPath : "f_061"
 		}];
 
 		function setFoodImage() {
@@ -302,7 +289,7 @@ h1, h2 {
 				foodArrayForNextRound.push(foodSel);
 
 				if (foodArray.length == 2) {
-					if (foodArrayForNextRound.length == 1) {
+					if (foodArrayForNextRound.length == 1) { // 최종 선택 완료 
 						$(".form-horizontal").html("<h1>완료!</h1>");
 						console.log("끝");
 						$.ajax({
@@ -322,7 +309,10 @@ h1, h2 {
 						return;
 					}
 					foodArray = foodArrayForNextRound;
-					$('#round').text(foodArray.length + "강");
+					if (foodArrayForNextRound.length == 2)
+						$('#round').text("결승전");
+					else
+						$('#round').text(foodArray.length + "강");
 					foodArrayForNextRound = [];
 				} else {
 					foodArray = foodArray.slice(2);

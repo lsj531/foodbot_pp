@@ -48,7 +48,7 @@ public class OneLineLearning extends Learning {
 		// 학습할 전체 패턴 갯수
 		patternNum = inputData.length;
 
-		// 추가학습은 배치가 인풋 전체  , 추가전체학습은 hyperparameter의 배치길이
+		// 추가학습은 배치가 인풋 전체, 추가전체학습은 hyperparameter의 배치길이
 		if(batchBoolean == true)
 			batchNum = new int[inputData.length];
 		else 
@@ -87,7 +87,6 @@ public class OneLineLearning extends Learning {
 
 			System.out.println("epoch = " + j );
 			System.out.println(j + "th cost is " + cost());
-			
 		}
 		FTime.endTime();
 		System.out.println("학습 시간은 : " + FTime.getStart2EndTime());
@@ -105,7 +104,6 @@ public class OneLineLearning extends Learning {
 			System.out.println(i+ "번째 데이터  " );
 			for(int j=0 ; j<result[i].length ; j++) {
 				System.out.printf("%.2f  ",result[i][j]);
-				//				System.out.print(result[i][j]+ " ");
 			}
 			System.out.println();
 		}
@@ -113,7 +111,7 @@ public class OneLineLearning extends Learning {
 	}
 
 	public void calcNet() {
-		System.out.println("trainInputData sizse" + inputData.length);
+		System.out.println("trainInputData size" + inputData.length);
 		//		for(int i=0 ; i<batchInputData.length ; i++) {
 		//			System.out.println(batchInputData.length);
 		//			for(int j=0 ; j<batchInputData[i].length;j++){
@@ -165,7 +163,6 @@ public class OneLineLearning extends Learning {
 			}
 		}
 	}
-
 
 
 	// trainset을 batch_num 만큼 랜덤set 으로 가져온다.

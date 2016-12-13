@@ -4,117 +4,170 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.foodbot.mapper.FoodMapper">
-  <insert id="create">
+	<insert id="create">
     insert into tbl_foodinfo (fcode,fname,ingredset,tasteset,image_path) values
     (#{fcode},#{fname},#{ingredset},#{tasteset},#{image_path})
-  </insert>
+	</insert>
   
-  <insert id="createIngred">
+	<insert id="createIngred">
     insert into tbl_ingredient (ingred_code,ingred) values
     (#{ingred_code},#{ingred})
-  </insert>
+	</insert>
   
-   <insert id="createTaste">
+	<insert id="createTaste">
     insert into tbl_taste (taste_code,taste) values
     (#{taste_code},#{taste})
-  </insert>
+	</insert>
   
-  <insert id="createMorp">
+	<insert id="createMorp">
     insert into tbl_morp (morp_code,morp) values
     (#{morp_code},#{morp})
-  </insert>
+	</insert>
   
-  <!--음식명 조건으로 read -->
-  <select id="readFname" resultType="FoodVO">
+	<!--음식명 조건으로 read -->
+	<select id="readFname" resultType="FoodVO">
     select * from tbl_foodinfo where fname = #{fname}
-  </select>
+	</select>
   
-  <!--음식코드 조건으로 read -->
-  <select id="readFcode" resultType="FoodVO">
+	<!--음식코드 조건으로 read -->
+	<select id="readFcode" resultType="FoodVO">
     select
     *
     from
     tbl_foodinfo
     where fcode = #{fcode}
-  </select>
+	</select>
   
-  <!--재료명 조건으로 read -->
-  <select id="readRecipe" resultType="FoodVO">
+	<!--재료명 조건으로 read -->
+	<select id="readRecipe" resultType="FoodVO">
     select
     *
     from
     tbl_foodinfo
-    where  fname like CONCAT('%',#{fname},'%') OR
-           ingredset like CONCAT('%',#{ingredset},'%') OR
-           tasteset like CONCAT('%',#{tasteset},'%')
-  </select>
+    where fname like CONCAT('%',#{fname},'%') OR
+          ingredset like CONCAT('%',#{ingredset},'%') OR
+          tasteset like CONCAT('%',#{tasteset},'%')
+	</select>
   
-   <!--초기 학습을 위한 레시피 read -->
-  <select id="readRecipeAll" resultType="FoodVO">
+	<!--초기 학습을 위한 레시피 read -->
+	<select id="readRecipeAll" resultType="FoodVO">
     select
     *
     from
     tbl_foodinfo
-  </select>
+	</select>
 
-  <!--형태소(nng) 조건으로 read -->
-  <select id="readNNGOne" resultType="FoodVO">
+	<!--형태소(nng) 조건으로 read -->
+	<select id="readNNGOne" resultType="FoodVO">
     select
     *
     from
     tbl_nng
     where nng = #{nng}
-  </select>
+	</select>
   
-  <!--형태소(나머지 모두) 조건으로 read -->
-  <select id="readMorpOne" resultType="morpVO">
+	<!--형태소(나머지 모두) 조건으로 read -->
+	<select id="readMorpOne" resultType="morpVO">
     select
     *
     from
     tbl_morp
     where morp = #{morp}
-  </select>
+	</select>
     
-  <!-- 재료 조건으로 read -->
-  <select id="readIngredOne" resultType="IngredVO">
+	<!-- 재료 조건으로 read -->
+	<select id="readIngredOne" resultType="IngredVO">
     select
     *
     from
     tbl_ingredient
     where ingred = #{ingred}
-  </select>
+	</select>
   
-   <!-- 맛 조건으로 read -->
-  <select id="readTasteOne" resultType="TasteVO">
+	<!-- 맛 조건으로 read -->
+	<select id="readTasteOne" resultType="TasteVO">
     select
     *
     from
     tbl_taste
     where taste = #{taste}
-  </select>
+	</select>
 
-  <!-- 모든 제료 read -->
-  <select id="readIngredAll" resultType="IngredVO">
+	<!-- 모든 재료 read -->
+	<select id="readIngredAll" resultType="IngredVO">
     select
     *
     from
     tbl_ingredient
-  </select>
+ 	</select>
   
-  <!-- 모든 맛 read -->
-  <select id="readTasteAll" resultType="TasteVO">
+	<!-- 모든 맛 read -->
+	<select id="readTasteAll" resultType="TasteVO">
     select
     *
     from
     tbl_taste
-  </select>
+	</select>
   
-  <!-- 모든 음식 read -->
-  <select id="readFoodAll" resultType="FoodVO">
-    select
-    *
-    from
-    tbl_foodinfo
-  </select>
+	<!-- 모든 음식 read -->
+	<select id="readFoodAll" resultType="FoodVO">
+	select
+	*
+	from
+	tbl_foodinfo
+	</select>
 
+  	<update id="update">
+	update tbl_rank set rate=#{rate}
+	where idx = #{idx}
+	</update>
+	<select id="listAll" resultType="FoodVO">
+  <![CDATA[
+    select
+      fname, rate
+    from
+      tbl_rank
+    order by rate desc
+  ]]>
+	</select> 
+	<select id="listK" resultType="FoodVO">
+  <![CDATA[
+    select
+      fname, rate
+    from
+      tbl_rank
+    where fcode like '1%'
+    order by rate desc
+  ]]>
+	</select> 
+	<select id="listJ" resultType="FoodVO">
+  <![CDATA[
+    select
+      fname, rate
+    from
+      tbl_rank
+    where fcode like '2%'
+    order by rate desc
+  ]]>
+	</select> 
+	<select id="listC" resultType="FoodVO">
+  <![CDATA[
+    select
+      fname, rate
+    from
+      tbl_rank
+    where fcode like '3%'
+    order by rate desc
+  ]]>
+	</select> 
+	<select id="listW" resultType="FoodVO">
+  <![CDATA[
+    select
+      fname, rate
+    from
+      tbl_rank
+    where fcode like '4%'
+    order by rate desc
+  ]]>
+	</select> 
 </mapper>

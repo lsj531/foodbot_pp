@@ -147,10 +147,7 @@ public class InitTrainData {
 			}System.out.println();
 		}
 		
-		/*
-		 * 
-		 * nomalization 일단안함
-		 */ 
+		//nomalization 일단안함
 //		MLPFunction mlpFunc = new MLPFunction();
 //		trainDataList = mlpFunc.setNomalization(trainDataList);
 		

@@ -35,4 +35,9 @@ public class MyInfoController {
 	public void idle() {
 		logger.info("idle worldcup");
 	}
+	
+	@RequestMapping(value="/list", method=RequestMethod.GET)
+	public void list() {
+		logger.info("list");
+	}
 }

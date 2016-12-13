@@ -33,19 +33,10 @@ public class FoodServiceImpl implements FoodService {
 		return dao.readRecipe(fname);
 	}
 
-	@Override
-	public void update(FoodVO vo) throws Exception {
-		
-	}
 
 	@Override
 	public void delete(String fcode) throws Exception {
 		
-	}
-
-	@Override
-	public List<FoodVO> listAll() throws Exception {
-		return null;
 	}
 
 	@Override
@@ -106,5 +97,35 @@ public class FoodServiceImpl implements FoodService {
 	@Override
 	public FoodVO readFcode(String fcode) throws Exception {
 		return dao.readFcode(fcode);
+	}
+
+	@Override
+	public void update(FoodVO vo) throws Exception {
+		dao.update(vo);
+	}
+	
+	@Override
+	public List<FoodVO> listAll() throws Exception {
+		return dao.listAll();
+	}
+	
+	@Override
+	public List<FoodVO> listK() throws Exception {
+		return dao.listK();
+	}
+
+	@Override
+	public List<FoodVO> listJ() throws Exception {
+		return dao.listJ();
+	}
+
+	@Override
+	public List<FoodVO> listC() throws Exception {
+		return dao.listC();
+	}
+
+	@Override
+	public List<FoodVO> listW() throws Exception {
+		return dao.listW();
 	}
 }

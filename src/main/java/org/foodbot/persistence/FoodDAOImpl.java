@@ -35,18 +35,8 @@ public class FoodDAOImpl implements FoodDAO {
 	}
 	
 	@Override
-	public void update(FoodVO vo) throws Exception {
-		
-	}
-
-	@Override
 	public void delete(String fcode) throws Exception {
 		
-	}
-
-	@Override
-	public List<FoodVO> listAll() throws Exception {
-		return null;
 	}
 
 	@Override
@@ -105,6 +95,36 @@ public class FoodDAOImpl implements FoodDAO {
 
 	@Override
 	public FoodVO readFcode(String fcode) throws Exception {
-		return  session.selectOne(namespace+".readFcode",fcode);
+		return session.selectOne(namespace+".readFcode",fcode);
+	}
+
+	@Override
+	public void update(FoodVO vo) throws Exception {
+		session.update(namespace+".update", vo);
+	}
+	
+	@Override
+	public List<FoodVO> listAll() throws Exception {
+		return session.selectList(namespace+".listAll");
+	}
+	
+	@Override
+	public List<FoodVO> listK() {
+		return session.selectList(namespace+".listK");
+	}
+
+	@Override
+	public List<FoodVO> listJ() {
+		return session.selectList(namespace+".listJ");
+	}
+
+	@Override
+	public List<FoodVO> listC() {
+		return session.selectList(namespace+".listC");
+	}
+
+	@Override
+	public List<FoodVO> listW() {
+		return session.selectList(namespace+".listW");
 	}
 }

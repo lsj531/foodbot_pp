@@ -80,10 +80,7 @@ public class ChartController {
 		double[][] attr = init.loadAttribute(Config.USER_TRAIN_WEIGHT + mlpVO.getAttribute_path());
 		int[] output = init.loadOutput(Config.USER_TRAIN_WEIGHT + mlpVO.getOutput_path());
 
-		/*
-		 * 1. 뜨거운 따뜻한 / 차가운 시원한 attribute 분류 2. 해당 attr의 모든 맛 속성 분류 3. {맛 , 값 }
-		 * 생성
-		 */
+		// 1. 뜨거운 따뜻한 / 차가운 시원한 attribute 분류 2. 해당 attr의 모든 맛 속성 분류 3. {맛, 값} 생성
 		System.out.println(result);
 		TrainDataName td = new TrainDataName(fservice);
 		List<String> tasteName = td.getTasteName();

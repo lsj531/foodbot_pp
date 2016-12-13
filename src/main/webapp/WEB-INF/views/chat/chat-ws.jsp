@@ -224,7 +224,6 @@
 		src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<script src="<%=cp%>/resources/js/jquery.js"></script>
 	<script src="<%=cp%>/resources/js/sockjs.js"></script>
-	<!-- JavaScript jQuery code from Bootply.com editor  -->
 
 	<script type='text/javascript'>
 	var wsocket;

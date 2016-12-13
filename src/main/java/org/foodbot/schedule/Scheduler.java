@@ -43,7 +43,7 @@ public class Scheduler {
 		curruidList = new HashMap<String,String>();
 		currSessionList = new ArrayList<String>();
 	}
-	@Scheduled(cron="*/5 * * * * *")
+	@Scheduled(cron="*/5 * * * * *") // 5초마다 스케줄러 실행
 	public void cronTest() throws Exception{
 		currSessionList = CountManager.sessionList;
 

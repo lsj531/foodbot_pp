@@ -114,7 +114,8 @@ public class IdleController {
 		for(int i =0; i<fcodeList.length ; i++) {
 			for(int j=0 ; j<fcodeList[i].length ; j++) {
 				System.out.print(fcodeList[i][j]+ " ");
-			}System.out.println();
+			}
+			System.out.println();
 		}
 		if(!result.isEmpty()) {
 			TrainDataName td = new TrainDataName(fservice);
@@ -136,7 +137,6 @@ public class IdleController {
 					RMajorAttrList = initRecipe.getMajorRecipe();
 					RSubAttrList = initRecipe.getSubRecipe();
 					RTasteAttrList = initRecipe.getTasteRecipe();
-					System.out.println("tt");
 					for(int j=0 ; j<RMajorAttrList.size() ; j++) {
 						System.out.print(RMajorAttrList.get(j) +" ");
 					}
@@ -145,7 +145,6 @@ public class IdleController {
 					}System.out.println();
 
 					if(s==0) {	// 이상형월드컵 선택된 음식은 가중치 업
-
 						// 이상형월드컵 결과 코드에 대한 음식명을 찾아온다
 						for(int n=0 ; n<initRecipe.getRFoodNameList().size(); n++) {
 							fnameList[i] = initRecipe.getRFoodNameList().get(n);

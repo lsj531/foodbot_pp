@@ -95,7 +95,6 @@ public class MLPController {
 		double[] attr = new double[dataName.size()];
 
 		for(int i=0 ; i<attr.length ; i++) {
-
 			// 입력값의 가중치를 따로 입력한다.
 			for(int j=0 ; j<ms.getMp().getWordList().size() ; j++) {
 				if(dataName.get(i).equals(ms.getMp().getWordList().get(j))) {
@@ -214,19 +213,19 @@ public class MLPController {
 				, init.loadOutput(Config.INIT_TRAIN_DATA+"o_"+path));	
 
 				int[] dataSet = {1};
-//				double[][] batchInputData = {attr};
 				double[] iattr = new double[attr.length];
 				System.out.println("총 속성 갯수");
 				for(int i=0 ; i<tattr.length ; i++) {
 					for(int j =0 ;j<tattr[i].length; j++) {
 						System.out.print(tattr[i][j] + " ");
+						iattr[j] += tattr[i][j];
 					}System.out.println();
 				}
-				for(int i=0 ; i<tattr.length ; i++) {
+/*				for(int i=0 ; i<tattr.length ; i++) {
 					for(int j =0 ;j<tattr[i].length; j++) {
 						iattr[j] += tattr[i][j];
 					}
-				}
+				}*/
 				System.out.println("**************검색할 속성은" + iattr.length);
 				for(int i=0 ; i<iattr.length ; i++) {
 					System.out.print(iattr[i] +" ");
@@ -234,7 +233,7 @@ public class MLPController {
 				
 				double[][] batchInputData = {iattr};
 				new Init().initBias(1);
-				Classification cf = new Classification(dataSet, batchInputData);
+				Classification cf = new Classification(fservice, dataSet, batchInputData);
 				// 테스트를 했으니 사용자가 이 데이터를 맘에 들어하면 온라인학습/추가저장을 실시하여야 한다.
 
 				double[] result = cf.getResult();
@@ -259,19 +258,19 @@ public class MLPController {
 
 				
 				int[] dataSet = {1};
-//				double[][] batchInputData = {attr};
 				double[] iattr = new double[attr.length];
 				System.out.println("총 속성 갯수");
 				for(int i=0 ; i<tattr.length ; i++) {
 					for(int j =0 ;j<tattr[i].length; j++) {
 						System.out.print(tattr[i][j] + " ");
+						iattr[j] += tattr[i][j];
 					}System.out.println();
 				}
-				for(int i=0 ; i<tattr.length ; i++) {
+/*				for(int i=0 ; i<tattr.length ; i++) {
 					for(int j =0 ;j<tattr[i].length; j++) {
 						iattr[j] += tattr[i][j];
 					}
-				}
+				}*/
 				System.out.println("**************검색할 속성은" + iattr.length);
 				for(int i=0 ; i<iattr.length ; i++) {
 					System.out.print(iattr[i] +" ");
@@ -280,7 +279,7 @@ public class MLPController {
 				double[][] batchInputData = {iattr};
 				
 				new Init().initBias(1);
-				Classification cf = new Classification(dataSet, batchInputData);
+				Classification cf = new Classification(fservice, dataSet, batchInputData);
 				double[] result = cf.getResult();
 				TrainDataName tdn = new TrainDataName(fservice);
 				List<String> outputName = tdn.getOutputName();

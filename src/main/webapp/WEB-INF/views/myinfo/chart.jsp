@@ -5,14 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
-  ul {
-    list-style: none;
-    margin-right : 0px;
-    float : left;
-  }
-  li {
-    padding : 5% 0 5% 0;
-  }
+ul {
+  list-style: none;
+  margin-right : 0px;
+  float : left;
+}
+li {
+  padding : 5% 0 5% 0;
+}
 </style>
 <title>차트</title>
 
@@ -46,7 +46,6 @@
 					"result" : "hot"
 				},
 				success : function(json) {
-					
 					console.log(typeof json);
 					kkk = JSON.stringify(json.content);
 					console.log(typeof kkk);

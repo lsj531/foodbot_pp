@@ -55,4 +55,19 @@ public class FoodVO {
 	public void setFcode(String fcode) {
 		this.fcode = fcode;
 	}
+	private String rate;
+	public String getRate() {
+		return rate;
+	}
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+	private int idx;
+	public int getIdx() {
+		return idx;
+	}
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+
 }

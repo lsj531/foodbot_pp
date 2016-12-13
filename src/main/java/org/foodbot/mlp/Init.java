@@ -300,7 +300,6 @@ public class Init implements InitMLP, TrainDataManagement {
 
 		for (int i = 0; i < output.length; i++) {
 			bw.append(output[i] + T);
-
 		}
 
 		bw.flush();
